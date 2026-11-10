@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-paper text-ink antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'ss01';
+  }
+
+  ::selection {
+    @apply bg-civic/20;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #cfcabd transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: #d6d1c5;
+    border-radius: 999px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-stone-200/80 bg-white shadow-panel;
+  }
+
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-45;
+  }
+
+  .btn-primary {
+    @apply btn bg-civic text-white shadow-sm hover:bg-[#264d51] active:translate-y-[1px];
+  }
+
+  .btn-secondary {
+    @apply btn border border-stone-300 bg-white text-stone-700 hover:border-stone-400 hover:bg-stone-50 active:translate-y-[1px];
+  }
+
+  .btn-ghost {
+    @apply btn text-stone-600 hover:bg-stone-100 hover:text-stone-900;
+  }
+
+  .btn-warn {
+    @apply btn bg-[#a1472f] text-white hover:bg-[#8a3b26] active:translate-y-[1px];
+  }
+
+  .btn-xs {
+    @apply rounded-md px-2 py-1 text-xs;
+  }
+
+  .label {
+    @apply text-[10px] font-semibold uppercase tracking-[0.16em] text-stone-500;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-stone-200 bg-white/80 px-2.5 py-1 text-xs text-stone-600;
+  }
+
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .panel-scroll {
+    @apply overflow-y-auto overscroll-contain;
+  }
+
+  .tab-btn {
+    @apply relative flex-1 whitespace-nowrap px-3 py-2.5 text-xs font-semibold uppercase tracking-[0.12em] text-stone-500 transition-colors hover:text-stone-800;
+  }
+
+  .tab-btn-active {
+    @apply text-civic;
+  }
+
+  .tab-btn-active::after {
+    content: '';
+    @apply absolute inset-x-3 -bottom-px h-[2px] rounded-full bg-civic;
+  }
+
+  .divider {
+    @apply border-t border-stone-200/80;
+  }
+}
+
+.dice-spin {
+  animation: dice-tumble 520ms ease-in-out;
+}
+
+@keyframes dice-tumble {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+  30% {
+    transform: rotate(-11deg) translateY(-3px);
+  }
+  60% {
+    transform: rotate(8deg) translateY(1px);
+  }
+  100% {
+    transform: rotate(0deg) translateY(0);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
